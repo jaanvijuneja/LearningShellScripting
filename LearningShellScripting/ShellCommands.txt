@@ -1,0 +1,38 @@
+Shell Scripting
+1) Change Directory
+
+1) cd
+cd command is used for changing the directories.
+
+For example, cd Desktop will take you to your Desktop directory.
+jaanvi@jaanviInspiron:~/Documents$ cd ShellScripting
+jaanvi@jaanviInspiron:~/Documents/ShellScripting$ cd ..
+
+2) cd ..
+
+cd .. command is used to change the current working directory.
+
+For example, jaanvi@jaanviInspiron:~/Documents/ShellScripting$ cd ..
+jaanvi@jaanviInspiron:~/Documents$
+
+
+3) cd ~ (root)
+
+cd ~ command is used to change the current directory. 
+
+For example, jaanvi@jaanviInspiron:~/Documents/ShellScripting$ cd ~
+jaanvi@jaanviInspiron:~$
+
+2) File Operations 
+
+1) Make directory
+mkdir 
+
+2) Create Text File
+cat > filename.txt
+ctrl + z (exit)
+
+
+3) Opening File
+
+xdg-open filename.txt
