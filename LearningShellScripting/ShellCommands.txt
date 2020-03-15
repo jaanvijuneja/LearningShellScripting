@@ -23,10 +23,10 @@ cd ~ command is used to change the current directory.
 For example, jaanvi@jaanviInspiron:~/Documents/ShellScripting$ cd ~
 jaanvi@jaanviInspiron:~$
 
-2) File Operations 
+***********************************************************
 
 1) Make directory
-mkdir 
+mkdir directoryname
 
 2) Create Text File
 cat > filename.txt
@@ -36,3 +36,124 @@ ctrl + z (exit)
 3) Opening File
 
 xdg-open filename.txt
+
+
+4) Difference between pwd, ls 
+
+pwd - print wording directory
+(root - current directory)
+jaanvi@jaanviInspiron:~/Documents$ pwd
+/home/jaanvi/Documents
+
+ls - list files and directories
+jaanvi@jaanviInspiron:~/LearningShellScripting$ ls
+ShellCommands.txt
+
+./
+
+ls -l list the files in the working directory in long formal
+jaanvi@jaanviInspiron:~/Documents$ ls -l
+total 140
+-rwxr-xr-x 1 jaanvi jaanvi 23784 Mar 12 10:19 a.out
+drwxr-xr-x 2 jaanvi jaanvi  4096 Mar 14 19:58 LearningGit
+-rw-r--r-- 1 jaanvi jaanvi 36124 Mar 12 10:18 lex.yy.c
+-rw-rw-r-- 1 jaanvi jaanvi   119 Mar 12 10:17 postfix.l
+-rw-rw-r-- 1 jaanvi jaanvi   673 Mar 12 10:17 postfix.y
+drwxr-xr-x 4 jaanvi jaanvi  4096 Mar 14 18:13 ShellScripting
+-rw-rw-r-- 1 jaanvi jaanvi   356 Feb 27 10:40 tag.l
+-rw-rw-r-- 1 jaanvi jaanvi 13245 Feb 27 10:13 tags.l
+-rw-r--r-- 1 jaanvi jaanvi 43757 Mar 12 10:18 y.tab.c
+
+5) less - view text files
+less filename
+
+6) file - will examine a file and tell you what kind of file it is.
+jaanvi@jaanviInspiron:~/Documents$ file postfix.y
+postfix.y: C source, ASCII text
+
+7) cp - copy files and directories 
+jaanvi@jaanviInspiron:~/Documents$ cp -i postfix.l tag.l
+cp: overwrite 'tag.l'? n
+
+"-i" (interactive) option is specified, if tag.l exists, the user is prompted before it is overwritten with the contents of postfix.l.
+
+8) cp file1 dir1 
+jaanvi@jaanviInspiron:~/Documents$ cp postfix.l ShellScripting
+jaanvi@jaanviInspiron:~/Documents$ ls ShellScripting
+LearningShellScripting  postfix.l
+
+9) cp -R dir1 dir2
+
+Copy the contents of the directory dir1. If directory dir2 does not exist, it is created. Otherwise, it creates a directory named dir1 within directory dir2.
+
+jaanvi@jaanviInspiron:~/Documents$ cp -R ShellScripting LearningGit
+jaanvi@jaanviInspiron:~/Documents$ ls
+a.out        lex.yy.c   postfix.y       tag.l   y.tab.c
+LearningGit  postfix.l  ShellScripting  tags.l
+jaanvi@jaanviInspiron:~/Documents$ ls LearningGit
+GitCommands.txt  ShellScripting
+
+****************** mv commands moves or renames files and directories
+10) mv -i file1 file2
+jaanvi@jaanviInspiron:~/LearningShellScripting$ mv -i ShellCommands.txt ShellCommands2.txt
+
+11) mv file1 file2 file3 dir1
+
+12) mv dir1 dir2
+
+
+13) rm - deletes the files and directories
+
+rm -i filename
+
+rm -r directory
+
+Example-
+
+jaanvi@jaanviInspiron:~/Documents$ rm -r LearningGit
+rm: remove write-protected regular file 'LearningGit/ShellScripting/.git/objects/1e/525297145d93705277a91eabc607fcf6ed6fff'? y
+rm: remove write-protected regular file 'LearningGit/ShellScripting/.git/objects/4b/825dc642cb6eb9a060e54bf8d69288fbee4904'? y
+rm: remove write-protected regular file 'LearningGit/ShellScripting/.git/objects/2f/bbff79f8bd178c18d56170a04f444c479eeabb'? y
+rm: remove write-protected regular file 'LearningGit/ShellScripting/.git/objects/c4/713d786f951ecfb2739da6293cbcf99f7ffeb7'? y
+rm: remove write-protected regular file 'LearningGit/ShellScripting/.git/objects/df/6b23f83f95839a6707187091359db29cc49466'? y
+rm: remove write-protected regular file 'LearningGit/ShellScripting/LearningShellScripting/.git/objects/4b/825dc642cb6eb9a060e54bf8d69288fbee4904'? y
+
+rm *
+will remove all the files from the current directory
+
+14) 
+    type - Display information about command type
+	jaanvi@jaanviInspiron:~/Music$ type mkdir
+	mkdir is hashed (/bin/mkdir)
+
+    which - Locate a command
+	jaanvi@jaanviInspiron:~$ which mkdir
+	/bin/mkdir
+
+    help - Display reference page for shell builtin
+	jaanvi@jaanviInspiron:~$ mkdir --help
+
+    man - Display an on-line command reference
+	jaanvi@jaanviInspiron:~$ man mkdir
+
+15) chmod - change the permissions of file
+jaanvi@jaanviInspiron:~/LearningShellScripting$ ls -l
+total 8
+-rw-r--r-- 1 jaanvi jaanvi 4377 Mar 15 15:32 ShellCommands.txt
+jaanvi@jaanviInspiron:~/LearningShellScripting$ chmod 777 ShellCommands.txt
+jaanvi@jaanviInspiron:~/LearningShellScripting$ ls -l
+total 8
+-rwxrwxrwx 1 jaanvi jaanvi 4377 Mar 15 15:32 ShellCommands.txt
+
+16) sudo su - temporary become the super user  
+jaanvi@jaanviInspiron:~$ sudo su
+[sudo] password for jaanvi: 
+root@jaanviInspiron:/home/jaanvi# exit
+exit
+
+17) chown - To change the owner of a file, you must be the superuser
+chown you filename
+
+18) chgrp - Changing group ownership (You must be the owner of the file or directory to perform a chgrp)
+chgrp new_group some_file
+
