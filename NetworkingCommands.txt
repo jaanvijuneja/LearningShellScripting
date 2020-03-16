@@ -1,0 +1,120 @@
+Networking Commands
+
+1) ifconfig
+
+ifconfig eth0 (ip address of ethernet)
+ifconfig lo (ip address of local network)
+ifconfig wlan0 (ip address of WLAN)
+
+2) To enable an interface - ifup eth0
+
+3) To disable an interface - ifdown eth0
+
+4) ip a (updated version of ifconfig)
+
+ip a show eth0  
+ip a show lo  
+ip a show wlan0
+
+5) traceroute google.com
+
+6) tracepath google.com
+
+7) ping google.com
+jaanvi@jaanviInspiron:~$ ping -w 2 google.com
+PING google.com (172.217.166.78) 56(84) bytes of data.
+64 bytes from bom05s15-in-f14.1e100.net (172.217.166.78): icmp_seq=1 ttl=50 time=46.6 ms
+64 bytes from bom05s15-in-f14.1e100.net (172.217.166.78): icmp_seq=2 ttl=50 time=30.3 ms
+--- google.com ping statistics ---
+2 packets transmitted, 2 received, 0% packet loss, time 1001ms
+rtt min/avg/max/mdev = 30.374/38.506/46.639/8.134 ms
+
+jaanvi@jaanviInspiron:~$ ping -i 2 google.com
+PING google.com (172.217.166.78) 56(84) bytes of data.
+64 bytes from bom05s15-in-f14.1e100.net (172.217.166.78): icmp_seq=1 ttl=50 time=35.7 ms
+64 bytes from bom05s15-in-f14.1e100.net (172.217.166.78): icmp_seq=2 ttl=50 time=31.2 ms
+64 bytes from bom05s15-in-f14.1e100.net (172.217.166.78): icmp_seq=3 ttl=50 time=31.5 ms
+64 bytes from bom05s15-in-f14.1e100.net (172.217.166.78): icmp_seq=4 ttl=50 time=34.4 ms
+
+8) netstat -tulpn
+jaanvi@jaanviInspiron:~$ netstat -tulpn
+(Not all processes could be identified, non-owned process info
+ will not be shown, you would have to be root to see it all.)
+Active Internet connections (only servers)
+Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name    
+tcp        0      0 127.0.0.53:53           0.0.0.0:*               LISTEN      -                   
+tcp        0      0 127.0.0.1:631           0.0.0.0:*               LISTEN      -                   
+tcp6       0      0 :::80                   :::*                    LISTEN      -                   
+tcp6       0      0 ::1:631                 :::*                    LISTEN      -                   
+udp        0      0 0.0.0.0:36657           0.0.0.0:*                           -                   
+
+
+9) ss -tulpn 
+jaanvi@jaanviInspiron:~$ ss -tulpn
+Netid  State    Recv-Q   Send-Q      Local Address:Port      Peer Address:Port  
+udp    UNCONN   0        0                 0.0.0.0:36657          0.0.0.0:*     
+udp    UNCONN   0        0           127.0.0.53%lo:53             0.0.0.0:*     
+udp    UNCONN   0        0                 0.0.0.0:68             0.0.0.0:*     
+udp    UNCONN   0        0                 0.0.0.0:631            0.0.0.0:*     
+udp    UNCONN   0        0                 0.0.0.0:5353           0.0.0.0:*     
+udp    UNCONN   0        0                    [::]:5353              [::]:*     
+udp    UNCONN   0        0                    [::]:34084             [::]:*     
+tcp    LISTEN   0        128         127.0.0.53%lo:53             0.0.0.0:*     
+tcp    LISTEN   0        5               127.0.0.1:631            0.0.0.0:*     
+tcp    LISTEN   0        128                     *:80                   *:*     
+tcp    LISTEN   0        5                   [::1]:631               [::]:*   
+
+10) nslookup
+jaanvi@jaanviInspiron:~$ nslookup google.com
+Server:		127.0.0.53
+Address:	127.0.0.53#53
+
+Non-authoritative answer:
+Name:	google.com
+Address: 172.217.166.78
+Name:	google.com
+Address: 2404:6800:4009:80f::200e
+
+jaanvi@jaanviInspiron:~$ nslookup -type=mx google.com
+Server:		127.0.0.53
+Address:	127.0.0.53#53
+
+Non-authoritative answer:
+google.com	mail exchanger = 40 alt3.aspmx.l.google.com.
+google.com	mail exchanger = 10 aspmx.l.google.com.
+google.com	mail exchanger = 50 alt4.aspmx.l.google.com.
+google.com	mail exchanger = 30 alt2.aspmx.l.google.com.
+google.com	mail exchanger = 20 alt1.aspmx.l.google.com.
+
+Authoritative answers can be found from:
+
+
+11) dig
+
+jaanvi@jaanviInspiron:~$ dig google.com
+
+; <<>> DiG 9.11.3-1ubuntu1.7-Ubuntu <<>> google.com
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 41644
+;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 65494
+;; QUESTION SECTION:
+;google.com.			IN	A
+
+;; ANSWER SECTION:
+google.com.		111	IN	A	216.58.197.142
+
+;; Query time: 356 msec
+;; SERVER: 127.0.0.53#53(127.0.0.53)
+;; WHEN: Mon Mar 16 13:39:14 IST 2020
+;; MSG SIZE  rcvd: 55
+
+
+
+
+
+
+
